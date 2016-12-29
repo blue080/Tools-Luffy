@@ -1,6 +1,8 @@
 /**
  * Created by blue on 2016/12/28.
  */
+import Type from './Type'
+
 export default class Str {
     constructor() {
     }
@@ -9,10 +11,9 @@ export default class Str {
      * 计算字符串所占的内存字节数，默认使用UTF-8的编码方式计算，也可制定为UTF-16
      * UTF-8 是一种可变长度的 Unicode 编码格式，使用一至四个字节为每个字符编码
      *
-     * 000000 - 00007F(128个代码)      0zzzzzzz(00-7F)                             一个字节
+     * 000000 - 00007F(128个代码)      0zzzzzzz(00-7F)                             一个字节 (英文)
      * 000080 - 0007FF(1920个代码)     110yyyyy(C0-DF) 10zzzzzz(80-BF)             两个字节
-     * 000800 - 00D7FF
-     00E000 - 00FFFF(61440个代码)    1110xxxx(E0-EF) 10yyyyyy 10zzzzzz           三个字节
+     * 000800 - 00D7FF 00E000 - 00FFFF(61440个代码)    1110xxxx(E0-EF) 10yyyyyy 10zzzzzz             三个字节
      * 010000 - 10FFFF(1048576个代码)  11110www(F0-F7) 10xxxxxx 10yyyyyy 10zzzzzz  四个字节
      *
      * 注: Unicode在范围 D800-DFFF 中不存在任何字符
@@ -65,6 +66,8 @@ export default class Str {
      * @returns {string}
      */
     static obj2str(obj) {
+        if(!Type.isObject(obj)) return "";
+
         return Object.getOwnPropertyNames(obj).map(key => {
             return encodeURIComponent(key) + '=' + encodeURIComponent(obj[key])
         }).join('&')
@@ -79,7 +82,7 @@ export default class Str {
      * @returns {object}
      */
     static str2obj(str) {
-        if (!str) return {};
+        if (!Type.isString(str)) return {};
 
         return str.split('&').reduce((acc, cur) => {
             let [k, v] = cur.split('=');
