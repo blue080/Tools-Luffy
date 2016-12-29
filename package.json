@@ -1,6 +1,6 @@
 {
   "name": "tools-luffy",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "some tools with es6",
   "main": "lib/index.js",
   "scripts": {
