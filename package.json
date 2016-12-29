@@ -4,7 +4,8 @@
   "description": "some tools with es6",
   "main": "lib/index.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha --compilers js:babel-core/register --watch"
+    "test": "./node_modules/mocha/bin/mocha --compilers js:babel-core/register --watch",
+    "test-md": "./node_modules/mocha/bin/mocha --compilers js:babel-core/register --recursive -R markdown > test/test.md"
   },
   "repository": {
     "type": "git",
