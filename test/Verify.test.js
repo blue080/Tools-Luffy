@@ -1,7 +1,7 @@
 /**
  * Created by blue on 2016/12/29.
  */
-import Verify from '../lib/Verify'
+import Verify from '../src/Verify'
 import {expect} from 'chai'
 
 describe('Verify', () => {

@@ -1,7 +1,7 @@
 /**
  * Created by blue on 2016/12/28.
  */
-import Type from '../lib/Type'
+import Type from '../src/Type'
 import {expect} from 'chai'
 
 describe('Type', () => {
